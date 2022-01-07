@@ -1,0 +1,155 @@
+<div>
+  
+          <div *ngIf="simpleSelector" [ngClass]="{section:true}">
+                <div [ngClass]="{coder:true}">
+                 <mdivo></mdivo>
+                
+                 <mlb> myHighlightBasic </mlb>
+                 <mdivc></mdivc>
+                <mdive></mdive>              
+              </div>  
+          </div>
+
+         
+         <div *ngIf="simpleSelectorDirective" [ngClass]="{section:true}">
+              <div [ngClass]="{coder:true}">
+                <my>@Directive</my>({{G.lCB}}selector: 
+                <mo>'[<mlb>myHighlightBasic</mlb>]' </mo>
+                {{G.rCB}}) <br/>
+
+                <!--HostBinding-->
+                <my>@HostBinding</my>(<mo>'style.backgroundColor'</mo>)<mb> get</mb><my> mySetColor()</my><br/>
+                {{G.lCB}}<mp> return</mp><mb> this</mb>.<mlb>myBackgroundColor</mlb>; {{G.rCB}} <br/>
+               
+                
+                <!--HostListener-->
+                <my>@HostListener</my>(<mo>'mouseenter'</mo>) <my>myMouseEnter()</my>{{G.lCB}}<br/>
+                <mb>this</mb>.<mlb>myBackgroundColor</mlb> = 
+                <mo>'lightpink' </mo>
+                {{G.rCB}} 
+             </div> 
+       </div>
+
+        <div *ngIf="simpleSelectorDeclare" [ngClass]="{section:true}">
+                 <h3>A: Declare</h3>
+                 <div [ngClass]="{coder:true}">
+                 <mdivo></mdivo>
+                
+                 <mlb> myDirectiveDatabind </mlb> 
+                 <mdivc></mdivc>
+                <mdive></mdive>              
+                </div>  
+          </div>
+             <div *ngIf="simpleSelectorDatabind" [ngClass]="{section:true}">
+                 <h3>B: Declare & Databind</h3>
+                 <span>i) Declare a directive whilst databinding</span>
+                  
+                 <div [ngClass]="{coder:true}">
+                 <mdivo></mdivo>      
+                 [<mlb>myDirectiveDatabind</mlb>]="<mo>'red'</mo>" 
+                 <mdivc></mdivc>
+                <mdive></mdive>          
+                </div>
+             </div>     
+
+                <div *ngIf="simpleSelectorDatabindTwo" [ngClass]="{section:true}">
+                 <span>ii) declare, declare & databind (same result as above)</span>
+                 <div [ngClass]="{coder:true}">   
+                 <mdivo></mdivo>      
+                 <mlb> myDirectiveDatabind </mlb> 
+                  [<mlb>myDirectiveDatabind</mlb>]="<mo>'red'</mo>" 
+                 <mdivc></mdivc>
+                <mdive></mdive>              
+                </div> 
+             </div>
+
+          
+            <div *ngIf="declareDirective" [ngClass]="{section:true}">
+              <div [ngClass]="{coder:true}">
+                <my>@Directive</my>({{G.lCB}}selector: 
+                <mo>'[<mlb>myDirectiveDatabind</mlb>]' </mo>
+                {{G.rCB}}) <br/>
+                 <br/>
+                <mb>private</mb><mlb> myBackgroundColor:</mlb><mlg> string;</mlg><br/>
+                @<my>Input</my>(<mo>'myDirectiveDatabind'</mo>)<mlb> myEnterColor; </mlb><br/>
+                <br/>
+                <!--HostBinding-->
+              
+                <my>@HostBinding</my>(<mo>'style.backgroundColor'</mo>)<mb> get</mb><my> mySetColor()</my><br/>
+                {{G.lCB}}<mp> return</mp><mb> this</mb>.<mlb>myBackgroundColor</mlb>; {{G.rCB}} <br/>
+                 <br/>
+                
+                <!--HostListener-->
+                <my>@HostListener</my>(<mo>'mouseenter'</mo>) <my>myMouseEnter()</my><br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mb>this</mb>.<mlb>myEnterColor;</mlb>
+                {{G.rCB}} 
+
+                 <my>@HostListener</my>(<mo>'mouseleave'</mo>) <my>myMouseLeave()</my><br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mo>'lightgreen'</mo>;
+                {{G.rCB}} 
+
+             </div> 
+       </div>
+
+       <div *ngIf="defaultsDiv" [ngClass]="{section:true}">
+           <div>i) Default Start Color = 'lightgrey' (refresh page)<br/>
+                   ii) Default Leave Colour ('lightgreen') is overridden by databound variable [myLeaveColourIn="'lightblue'"]
+           </div>
+                <div [ngClass]="{coder:true}">
+                 <mdivo></mdivo>
+                
+                 <mlb> myDirectiveSetDefault   </mlb><br/> [<mlb>myClickColor</mlb>]="<mo>'orange'</mo>" <br/>
+                                                      [<mlb>myEnterColorIn</mlb>]="<mo>'red'</mo>"<br/>
+                                                      [<mlb>myLeaveColorIn</mlb>]="<mo>'lightblue'</mo>"
+                 
+                 <mdivc></mdivc>
+                <br/>
+                <mdive></mdive>              
+              </div>  
+          </div>
+
+        <div *ngIf="defaultsDirective" [ngClass]="{section:true}">
+            
+              <div [ngClass]="{coder:true}">
+                <my>@Directive</my>({{G.lCB}}selector: 
+                <mo>'[<mlb>myDirectiveSetDefault</mlb>]' </mo>
+                {{G.rCB}}) <br/>
+                 <br/>
+                <mb>private</mb><mlb> myBackgroundColor:</mlb><mlg> string;</mlg><br/>
+                 @<my>Input</my>( )<mlb> myClickColor; </mlb> <mg [eS]="'(Because there is no input variable declaration within the @Input() brackets'">   // Variable Name in HTML & Directive must match </mg><br/>
+                 @<my>Input</my>( )<mlb> myDefaultStartColor = <mo>'lightgrey'</mo>; </mlb><mg [eS]="'(Gives the option of Databinding or Not Databinding from HTML'">    //Set a default Color. </mg><br/>
+                 @<my>Input</my>(<mo>'myEnterColorIn'</mo>)<mlb> myEnterColor; </mlb><mg [eS]="'. Can be same or different if an @Input() variable is provided'">//Variable name doesn't match</mg><br/>
+                 @<my>Input</my>(<mo>'myLeaveColorIn'</mo>)<mlb> myLeaveDefaultColor = <mo>'lightgreen'</mo>; </mlb><mg [eS]="' Will set the Mouse Leave colour to green if no colour is databound'">//Variable </mg><br/>
+                <br/>
+                <!--HostBinding-->
+              
+                <my>@HostBinding</my>(<mo>'style.backgroundColor'</mo>)<mb> get</mb><my> mySetColor()</my><br/>
+                {{G.lCB}}<mp> return</mp><mb> this</mb>.<mlb>myBackgroundColor</mlb>; {{G.rCB}} <br/>
+                 <br/>
+                
+                <!--HostListener-->
+                <my>@HostListener</my>(<mo>'mouseenter'</mo>) <my>myMouseEnter()</my><br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mb>this</mb>.<mlb>myEnterColor;</mlb>
+                {{G.rCB}} <br/>
+
+                 <my>@HostListener</my>(<mo>'mouseleave'</mo>) <my>myMouseLeave()</my><br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mo>'lightgreen'</mo>;
+                {{G.rCB}} <br/>
+
+                 <my>@HostListener</my>(<mo>'click'</mo>) <my>myOnClick()</my><br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mb> this</mb>.<mlb>myClickColor</mlb>;
+                {{G.rCB}} <br/><br/>
+
+                <mg>**** Initialise App Method sets Default Start Colour****</mg><br/>
+
+                 <my>ngOnInit</my>()<br/>
+                {{G.lCB}}<mb> this</mb>.<mlb>myBackgroundColor</mlb> = <mb>this</mb>.<mlb>myDefaultStartColor;</mlb>
+                {{G.rCB}} <br/>
+
+
+             </div> 
+       </div>
+
+
+</div> 
+

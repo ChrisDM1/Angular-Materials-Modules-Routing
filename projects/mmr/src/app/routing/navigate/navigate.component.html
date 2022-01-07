@@ -1,0 +1,67 @@
+<h1>Navigate Queries</h1>
+
+<!--*** navigate *********************************************-->
+<mb>this</mb>.<mlb>myRouter</mlb>.<mlg>navigate</mlg>([<mo>'/navigate'</mo>]) <span (click)="n()"><mCk>/navigate</mCk></span> <br> 
+<mb>this</mb>.<mlb>myRouter</mlb>.<mlg>navigate</mlg>([<mo>'/navigate'</mo>],&#123;<mlb>queryParams</mlb>:&#123;<mo>'query'</mo>:<my>100</my>&#125;&#125;);
+                                                                <span (click)="nQuery()"><mCk>/navigate?query=100 </mCk></span><br>
+<!--*** routerLink **********************************************-->
+routerLink <br>
+&nbsp; <mb>&lt;a</mb> [<mlb>routerLink</mlb>]="<mo>['/navigate']</mo>" [<mlb>queryParams</mlb>]="<mo>&#123; query:500&#125;</mo>" &gt;
+<a [routerLink]="['/navigate']" [queryParams]="{query:500}">?query=500</a>
+<a [routerLink]="['/navigate']" [queryParams]="{query:500,queryTwo:700}">?query=500&queryTwo=700</a>
+
+<hr>
+<div>
+
+    <h1>Outlets</h1>
+<h4>HOVER over LINKS to see the suggested URL's</h4>
+    <a [routerLink]="['',{outlets: {namedOutlet: 'outlet'}}]" [queryParams]="{analytics:300}">"['',&#123;outlets: &#123;namedOutlet: 'outlet'&#125;&#125;]</a> | Current page <span style='color:lime'>Works</span><br>
+    <a [routerLink]="['/',{outlets: {namedOutlet: 'outlet'}}]" [queryParams]="{analytics:300}">['/',&#123;outlets: &#123;namedOutlet: 'outlet'&#125;&#125;]</a> | Current page <span style='color:lime'>Works</span><br>
+    <a [routerLink]="['/navigate',{outlets: {namedOutlet: 'outlet'}}]" [queryParams]="{analytics:300}">['/navigate',&#123;outlets: &#123;namedOutlet: 'outlet'&#125;&#125;]</a>  <span style='color:red'>Not Works (also below)</span><br>
+    <a [routerLink]="['/params',{outlets: {namedOutlet: 'outlet'}}]" [queryParams]="{analytics:300}">['/params',&#123;outlets: &#123;namedOutlet: 'outlet'&#125;&#125;]</a> | NOTE: Navigating to a new page adds a slash b4 the outlet and may require a different app.routing path or a second navigation call based on a parameter.  <br>
+
+
+    <a [routerLink]="[{outlets:{querySection:null}}]">[&#123;outlets: &#123;namedOutlet: null&#125;&#125;]</a> | Close Outlet<br>
+    <a [routerLink]="[{outlets:{querySection:null}}]" [queryParams]="{analytics:300}">[&#123;outlets: &#123;namedOutlet: null&#125;&#125;] [queryParams]="&#123;analytics:300&#125;"</a> | Close with params<br>
+
+    <!-- <router-outlet name="querySection"></router-outlet> -->
+    <h4 (click)="sc.k.lessons=!sc.k.lessons" style='cursor:pointer'>Lessons::</h4>
+    
+    <co [sw]="sc.k.lessons">
+        <ol>
+            <li>You cannot navigate to a new component and specify an outlet (unless there is something I don't know yet) </li>
+            <li>Workaraound: Navigate with query params and then navigate the outlet. ( Be aware that you want to have urls with States in mind )</li>
+            <li>You can have multiple outlets with params as well, google multiple router outlets stackblitz. <a href="https://stackblitz.com/edit/multi-router-outlet?file=src%2Fapp%2Fapp.component.html">chinese one</a></li>
+        </ol>
+    </co>
+
+
+    <h3>Navigate to Outlet </h3>
+  <mb>this</mb>.<mlb>myRouter</mlb>.<mlg>navigate</mlg>([<mo> ' '</mo>,&#123;<mlb>outlets</mlb>:&#123;<mlb>namedOutlet</mlb>: <mo>'outlet'</mo>&#125;&#125;]) <br>
+  <mb>this</mb>.<mlb>myRouter</mlb>.<mlg>navigate</mlg>([<mo>'/'</mo>,&#123;<mlb>outlets</mlb>:&#123;<mlb>namedOutlet</mlb>: <mo>'outlet'</mo>&#125;&#125;])<span (click)="myNavigateQuerySection()"><mCk>/navigate(namedOutlet:outlet)</mCk></span> Same result for both<br>
+  
+  <p (click)="sc.k.outletNav=!sc.k.outletNav" style='cursor:pointer'> 
+    Note::... </p>
+  <co [sw]="sc.k.outletNav">If you have nested router-outlets you would have to use child routes in app.routing as per examples. <br>
+    You can have multiple named routers side by side. as per chinese version. It was using child routes, no primary routes. <br>
+    If navigating to another router-outlet you may have to navigate via slashes</co>
+<hr>
+<h3>app.routing</h3>
+
+<p> &#123;<br>
+    <mlb>path:</mlb><mo> 'outlet'</mo>,<br>
+    <mlg>component: RoutingComponent</mlg> &#125;, <br>
+    <mlb>outlet:</mlb><mo> 'namedOutlet'</mo>,<br>
+    &#125;<br>
+    <span style="color:rgb(0, 153, 255);">&lt;router-outlet <mlb>name=</mlb><mo>"namedOutlet"</mo>&gt;</span>
+</p>
+    <hr>
+
+    <h3>Close Outlet</h3>
+
+
+    <mb>&lt;a</mb> [<mlb>routerLink</mlb>]=<mo>"[ ' ' ,&#123;outlets: &#123;namedOutlet: null&#125;&#125;]"</mo>&nbsp;
+        <a [routerLink]="['',{outlets: {namedOutlet: null}}]">Close using routerLink</a><br>
+        <mb>this</mb>.<mlb>myRouter</mlb>.<mlg>navigate</mlg>([<mo>''</mo>,&#123;<mlb>outlets</mlb>:&#123;<mlb>namedOutlet</mlb>: <mb>null&nbsp;</mb>&#125;&#125;]) 
+        <mCk (click)="closeSection()">Close Method using navigate</mCk> <br>
+        IMPORTANT: <span style='font-size: 10px;'>Seems like you need to include the path. (not sure if this is a newer version thing, but do it to be safe)</span> 

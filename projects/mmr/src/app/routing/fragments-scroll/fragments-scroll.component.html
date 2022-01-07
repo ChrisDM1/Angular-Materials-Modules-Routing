@@ -1,0 +1,61 @@
+<h1 id="top">Fragments</h1>
+
+<div id="" [ngClass]="{overflow:true}">
+
+<p (click)="sc.k.fb=!sc.k.fb" style='cursor:pointer'>Fragment Imports :..</p>
+<co [sw]="sc.k.fb"><img src='./assets/images/routing/Fragment/FragmentImports.PNG'></co>
+    <p (click)="sc.k.fa=!sc.k.fa" style='cursor:pointer'>Fragment HTML :..</p>
+    <co [sw]="sc.k.fa">
+       <mlb>(click)</mlb>= "<mo>myNavigateToFragment(myDataInput.value)</mo>"
+    </co>
+ 
+  
+     
+     <p (click)="sc.k.fc=!sc.k.fc" style='cursor:pointer'>Fragment TS Code (more detail) :..</p>
+     <co [sw]="sc.k.fc">   <img src='./assets/images/routing/Fragment/FragmentTS.PNG'></co>
+         
+        
+<p><mb>constructor</mb>(<mb>private </mb><mlb>router</mlb>: <mlg>Router</mlg>,
+    <mb>private </mb><mlb>activatedRoute</mlb>: <mlg>ActivatedRoute</mlg>)&#123; </p>
+
+<mb>this.</mb><mlb>subscription</mlb> = <mb>this</mb>.<mlb>activatedRoute.fragment</mlb>.<my>subscribe</my>(<br>
+   &nbsp; <mlb>f</mlb> <mb>=></mb> &#123;<br>
+   &nbsp; &nbsp;    <mb>const</mb>&nbsp; <mlb>fragment</mlb>: <mlg>HTMLElement</mlg> | null = <mlb>document</mlb>.<my>getElementById</my>(<mlb>f</mlb> ! )  ;
+        <br> &nbsp;&nbsp; &nbsp;<mp>if</mp> ( <mb>fragment</mb> ) <mb>fragment</mb>.<my>scrolIntoView</my>
+        (&#123;<mlb>behaviour</mlb>: <mo>"smooth"</mo>, <mlb>block</mlb>: <mo>"start"</mo>, <mlb>inline</mlb>: <mo>"nearest"</mo> &#125; ) ;
+        <br>&#125;     
+<br>
+   <my>navigateToFragment</my>(<mlb>index</mlb>:<mlg>string</mlg>)&#123; <br>
+
+   <mg [eS]="' the subscription into believing we have changed URL to the TOP'">//Trick</mg><br>
+    &nbsp;&nbsp;   <mb>this</mb>.<mlb>router</mlb>.<my>navigate</my>([<mo>'/fragments-scroll</mo>],
+                      &#123;<mlb>fragment</mlb>:<mo>'top'</mo>&#125;)
+                      &#125;<br>
+   <mg [eS]="'time to be processed'">Url needs </mg>    <br>               
+   <my>setTimeout</my>(()<mb>=></mb>)&#123;
+   <br>
+       <mg [eS]="'actually parsed and set to Two different variables for example purpose only'">INDEX is</mg><br>
+       <mb>this</mb>.<mlb>router</mlb>.<my>navigate</my>([<mo>'/fragments-scroll'</mo>]),&#123;<mlb>fragment</mlb>:<mlb>index</mlb> &#125;);
+   }                   
+
+
+</div>
+
+<div id="fragment{{i}}" 
+     [ngClass]="{box:true}"
+     *ngFor="let a of fakeArray; let i = index">
+
+    <span>Fragment / # {{ i }} </span><br/>
+
+    <button mat-stroked-button color="primary"
+        (click)="myNavigateToFragment(myDataInput.value)">
+        <span [ngClass]="{red:i==fragmentInt}" > Navigate to Fragment #  {{myDataInput.value}} </span>
+    </button>
+
+    <input type="text" #myDataInput (input)="0">
+
+
+</div>
+<div id="bottom">Bottom</div>
+
+

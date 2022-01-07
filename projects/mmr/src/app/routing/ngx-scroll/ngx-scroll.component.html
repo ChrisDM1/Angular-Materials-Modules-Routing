@@ -1,0 +1,65 @@
+<!-- <p class="xPointer" (click)="openThis('href')"><span>href target  / pageScroll</span></p> 
+<p class="xPointer" (click)="openThis('Nested')"><span>href target  / pageScroll</span></p>  -->
+
+<h4>NGX-SCROLL</h4>
+<p>Make sure the container being scrolled is: </p> 
+    <ul>
+        <li>display:block;</li>
+        <li>height:set; eg 600px, 100%; <br>
+             squash previews makes div height 100% so any that goes over is scrollable</li>
+        <li>position:relative;</li>
+    </ul>
+    
+  
+<p>import required imports into component</p>
+<p>No IMPORTS - just easing Logic</p>
+<p><span style="color:blueviolet">import</span>&nbsp;
+    <span style="color:lightblue">EasingLogic</span></p>
+
+    <button (click)="scrollInsideBasic()" class="btn btn-default" mat-stroked-button color="accent">
+        Scroll Basic
+      </button>
+      
+<button (click)="scrollInsideComplex()" mat-stroked-button color="primary">
+Scroll Complex
+</button>
+
+<p></p>
+
+
+
+
+    
+    <div #complexContainer style="position:relative;overflow:auto;display:block;height:600px;">
+        <mb>&lt;div</mb>&nbsp;<mlb>#basicContainer &nbsp;style</mlb>=<mo>position:relative;overflow:auto;display:block;height:800px;"</mo>&gt; <br>
+               
+                @<mlg>ViewChild</mlg>(<mo>'basicContainer'</mo>)&nbsp; <mb>public</mb>&nbsp; <mlb>basicContainer</mlb>!:&nbsp;<mlg>ElementRef</mlg>
+
+
+            <div #basicContainer style="position:relative;height:100%;overflow:auto;display:block;">
+              
+           
+     
+            <div style="height:400px;border: 10px solid green;"></div>
+            <div style="height:400px;border: 10px solid blue;"></div>
+            <div style="height:400px;border: 10px solid red;"></div>
+            <div id="awesomePart" style="height:400px;border: 10px solid yellow;">id="awesomePart"</div>
+            <div id="targetComplex" style="height:400px;border: 10px solid purple;">id = "targetComplex"</div>
+            <div id="targetBasic" class="targetScroll" style="height:400px;border: 10px solid orange;">id = "targetBasic"</div>
+        </div>
+        </div>
+<div style='position:fixed; top:0px;right:100px;z-index:1000'>
+
+    <h4>href target / pageScroll</h4>
+
+
+
+
+    <p>Include the target and directive pageScroll in button</p>
+    <p class="code">&#x3C;button href="targetId/class" pageScroll</p>
+    <ul>
+        <li *ngFor='let feature of simpleFeatures;let i=index;' (click)="setCurrentIndex(i)" class="xPointer">{{feature.x}} <span *ngIf="currentIndex==i" class="code">{{feature.y}}</span></li>
+    </ul>
+
+
+</div>

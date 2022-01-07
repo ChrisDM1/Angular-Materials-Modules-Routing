@@ -1,0 +1,19 @@
+.section{
+    
+    float:left;  
+    margin:4px;
+    overflow:hidden;
+}
+
+h3 {
+ margin: 5px;
+
+}
+.coder {
+    background-color:#1E1E1E;
+    display:inline-block;   
+    color:white;
+    padding-left:5px;
+    padding-right:5px;
+   }   
+

@@ -1,0 +1,80 @@
+#sd-nav{
+
+    display:block;
+    position:fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    left:0px;
+    top:0px;
+    height:100%;
+    width:100%;
+    background-color:black;
+
+
+
+}
+
+.brd-shdw-rt{
+    -moz-box-shadow: 10px 0px 10px rgba(15, 15, 15, 0.219);
+    -webkit-box-shadow: 10px 0px 10px rgba(15, 15, 15, 0.219);
+    box-shadow: 10px 0px 10px rgba(15, 15, 15, 0.219);
+}
+
+nav {
+    width: 100%;
+    padding: 25px 5px;
+    display: table;
+    ul.menu {
+        display: table-cell;
+        vertical-align: middle;
+        >li {
+            width: 100%;
+            float: none;
+            height: auto;
+            padding: 0;
+            >a {
+                text-transform: uppercase;
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+                font-size: 18px;
+                &:hover {
+                    background: transparent;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
+        }
+        ul.drop-down {
+            padding: 5px 0;
+            margin: 0;
+            li {
+                width: 100%;
+                float: none;
+                a {
+                    color: #999;
+                    background: transparent;
+                    text-decoration: none;
+                    cursor: pointer;
+                    padding: 20px 0;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+ul {
+    padding-inline-start: 0px;
+}
+
+li {
+    padding: 10px 10px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    list-style-type: none;
+}
+
+a.active {
+    color: dodgerblue !important;
+}

@@ -1,0 +1,85 @@
+<div id='sd-nav'>
+    <nav-a></nav-a>
+    <nav-b></nav-b>
+    <!-- <nav-c></nav-c>   -->
+</div>
+<div>
+    <!-- fxFlex="1 0 auto" -->
+    <div id="routerOutlet" style='display:block;float:left;z-index:1;padding-left:20px;' [ngStyle]='{marginLeft:ssh.rtrOutleft+"px"}'>
+
+        <!-- <debug-tool *ngIf="ssh.mSt.debugOpen"></debug-tool> -->
+
+        <div>
+
+            <!--                                                                                                                                                                                                                                    
+ __/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\__                
+ \    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /                
+ /_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\                
+   \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/      -->
+
+
+            <!--
+              ____            _                    _      __  _____                       _           _      __  _   _           _           _ 
+             |  _ \  ___  ___| | __ _ _ __ ___  __| |    / / | ____|_  ___ __   ___  _ __| |_ ___  __| |    / / | \ | | ___  ___| |_ ___  __| |
+             | | | |/ _ \/ __| |/ _` | '__/ _ \/ _` |   / /  |  _| \ \/ / '_ \ / _ \| '__| __/ _ \/ _` |   / /  |  \| |/ _ \/ __| __/ _ \/ _` |
+             | |_| |  __/ (__| | (_| | | |  __/ (_| |  / /   | |___ >  <| |_) | (_) | |  | ||  __/ (_| |  / /   | |\  |  __/\__ \ ||  __/ (_| |
+             |____/ \___|\___|_|\__,_|_|  \___|\__,_| /_/    |_____/_/\_\ .__/ \___/|_|   \__\___|\__,_| /_/    |_| \_|\___||___/\__\___|\__,_| 
+                                                                        |_|                                                                         -->
+
+            <nested-lazy *ngIf="index||declaredSection" [declaredSection]='declaredSection'></nested-lazy>
+
+
+
+
+
+            <!--                                                                                                                                                                                                                                    
+ __/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\____/\__                
+ \    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /\    /                
+ /_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\/_  _\                
+   \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/    \/      -->
+
+
+            <hr>
+            <strong>app.html router-outlet</strong>
+            <a [routerLink]="''" class="p" style="margin-left:50px;">
+                <button class="btn btn-outline-danger">CLEAR app.html router ([routerLink]= '')</button>
+            </a>
+      
+            <br/>
+            <br/>
+
+            <span style="color:blue;"><strong>&lt;router-outlet&gt;</strong></span>
+            <div style="margin-left:50px;border:3px solid blue;padding:5px;margin-bottom:5px;">
+
+
+
+                <router-outlet>
+                </router-outlet>
+
+
+
+            </div>
+            <span style="color:blue;"><strong>&lt;router-outlet&gt;</strong></span>
+
+            <hr>
+            <strong>app.html</strong><br/>
+            <span style="color:lightskyblue;"><strong>&lt;router-outlet name="namedOutlet"&gt;</strong></span>
+            <div style="margin-left:50px;border:3px solid lightskyblue;padding:5px;margin-bottom:5px;">
+              
+            
+
+                <router-outlet name="namedOutlet"></router-outlet>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+</div>

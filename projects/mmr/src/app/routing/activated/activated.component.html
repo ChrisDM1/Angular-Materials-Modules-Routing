@@ -1,0 +1,46 @@
+<h1>Activated Links</h1>
+
+<h3><mlb>routerLinkActive</mlb>&nbsp;=&nbsp;<mo>"myActiveClass"</mo></h3>
+<p> The router will attach the class specified to the link if the router determines it to be the current route</p>
+
+&lt;<mb>a</mb>&nbsp; <mlb>[routerLink]</mlb>=<mo>"[ '....' ]</mo>&nbsp;<mlb>routerLinkActive</mlb>&nbsp;=&nbsp;<mo>"myActiveClass"</mo>&gt;...&lt;/<mb>a</mb>&gt; <br><br>
+
+<a [routerLink]="['']"  routerLinkActive="myActiveClass" >[ rl ] = "[ ' ' ]")</a>&nbsp;<mg [eS]="'because router always loads it first'">//empty always active</mg><br/>
+<a [routerLink]="['']"  routerLinkActive="myActiveClass"  [routerLinkActiveOptions]="{exact:true}">[ rl ] = "[ ' ' ]"</a> &nbsp;<mlb>routerLinkActiveOptions</mlb>&nbsp;=&nbsp;<mo>"&#123; exact:true  &#125;"</mo>
+&nbsp;<mg [eS]="'forces it to check the exact path'">//EXACT TRUE overcomes above issue: </mg> <br/>
+<a [routerLink]="['/activated']" [queryParams]="{analytics:true}" routerLinkActive="myActiveClass" >[ rl ] = "['/activated']"</a>&nbsp; <mlb>[queryParams]</mlb>&nbsp;&nbsp;<mo>"&#123;myParam : TRUE &#125;"</mo><mg [eS]="'is a different path to false below'">//TRUE</mg><br/>
+<a [routerLink]="['/activated']" [queryParams]="{analytics:false}" routerLinkActive="myActiveClass" >[ rl ] = "['/activated']")</a>&nbsp; <mlb>[queryParams]</mlb>&nbsp;&nbsp;<mo>"&#123;myParam : FALSE &#125;"</mo><mg [eS]="'so they are styled differently'">//FALSE is a Different Path</mg><br/>
+<br/>
+
+
+<div routerLinkActive="myActiveClassBorder">
+
+<h3>Ancestor element <mlb>routerLinkActive</mlb></h3>
+<div routerLinkActive="myActiveClassBorder">
+    <mdivo></mdivo>&nbsp; <mlb>routerLinkActive</mlb>&nbsp;=&nbsp;<mo>"myActiveClassBorder"</mo> &nbsp; <mdivc></mdivc><br>
+   
+
+    <a [routerLink]="['/activated']" [queryParams]="{borderMe:true}" >[ rl ] = "[ '/activated' ]")</a>&nbsp; &lt;
+               &nbsp; <mb>a</mb>&nbsp; <mlb>[routerLink]</mlb>=<mo>"[ '/activated' ']</mo>&nbsp;<mlb>routerLinkActive</mlb>&nbsp;=&nbsp;<mo>"myActiveClass"</mo>&nbsp;
+                              <mlb>[queryParams]</mlb>&nbsp;=&nbsp;<mo>"&#123;borderMe : true &#125;"</mo>&gt;...&lt;/<mb>a</mb>&gt; <br>
+               &nbsp;  <mg [eS]="'css class activation'">//Ancestor Div can receive </mg><br/>
+    <mdive></mdive><br>
+</div>
+</div>
+<br>
+<div routerLinkActive="myActiveClassBorder">
+
+     <mdivo></mdivo>&nbsp; <mlb>routerLinkActive</mlb>&nbsp;=&nbsp;<mo>"myActiveClassBorder"</mo><mdivc></mdivc><br>
+            NOT an Ancestor, does border appear here?<br>
+            <mg [eS]="'css class activation so when the above link or any other link is clicked it won t activate'">//Cannot receive </mg><br>
+     <mdive></mdive><br>
+
+</div>
+
+
+
+<h3>Outlets</h3>
+<a [routerLink]="['/',{outlets:{namedOutlet:'outlet'}}]" routerLinkActive="myActiveClass">Open Section</a><br/>
+<a [routerLink]="['/',{outlets:{namedOutlet:null}}]" routerLinkActive="myActiveClass">Close Section</a><br/>
+
+

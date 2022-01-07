@@ -1,0 +1,33 @@
+<h1>Three Methods</h1>
+
+<div style='margin-top:30px;padding:5px;'>
+
+    <h2>1) AppWideIconsModule imported into App.module </h2>
+    <h4>Importer now has instant access </h4>
+    <mat-icon>file_upload</mat-icon>
+    <img src='./../assets/images/importer-three-methods/1-app-wide.PNG'>
+    <p>Note: importer-three-methods.module did not import it, because it is part of the app module now. </p>
+
+</div>
+
+<div style='margin-top:30px;'>
+
+    <h2>Buttons Module imported into ThreeMethods Module NOT App.module</h2>
+    <h4>2) ThreeMethods Imported into app.module. Importer Module with Declared/Exported Component imports the exported button modules from a common Button module</h4>
+    <mat-button-toggle>Toggle me!</mat-button-toggle>
+    <button mat-button>Button</button>
+    <img src='./../assets/images/importer-three-methods/2-common-module.PNG'>
+
+    <p>Note: my-buttons.module is not imported in the app.module </p>
+
+</div>
+
+
+<div style='margin-top:30px;'>
+    <h4>3) Importer imports directly from @node_modules</h4>
+    <img src='./../assets/images/importer-three-methods/3-direct.PNG'>
+    <p>Note: a module cannot be imported into a component.
+        <br/>Modules can only be part of other modules </p>
+    <mat-spinner></mat-spinner>
+
+</div>

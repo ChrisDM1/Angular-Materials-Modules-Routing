@@ -1,0 +1,16 @@
+#nav-b{
+    color:white;
+    display:block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position:fixed;
+    top:0px;
+    left:0px;
+    height:100%;
+    background-color:rgb(66,66,66);
+    z-index:10002;
+}
+
+.lgnDsk{
+    position:absolute;bottom:35px;
+}

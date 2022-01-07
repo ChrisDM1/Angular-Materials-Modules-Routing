@@ -1,0 +1,47 @@
+<h1 style='background-color: black;color:white;'>General Material Module imported into APP MODULE for all components to import </h1>
+<div style="display: block; float:left;padding:10px;width:100%;margin-bottom:10px;">
+    Note: this can slow down processing
+</div>
+<div style="display: block; float:left;padding:10px;width:100%;margin-bottom:10px;">
+    <p>
+        <mat-icon>&#xE55F;</mat-icon>
+        <mat-icon>file_upload</mat-icon>
+        <mat-icon>{{icon}}</mat-icon>
+
+        Icons can be directly inserted into the mat-icon tag, or utilise interpolation (arrays also work)</p>
+
+</div>
+<a class="card" target="blank" href="https://material.io/resources/icons/?icon=3d_rotation&style=sharp" style="float:right">
+        Click for all icons - not sure where #xE55F  comes from??
+        </a>
+
+<img src='./../assets/images/snack-icon/IconsIndHtml.PNG' style="float:left">
+<img src='./../assets/images/snack-icon/IconsIndType.PNG' style="float:left">
+
+<div style="clear:both"></div>
+<hr>
+
+<img src='./../assets/images/snack-icon/IconsArrayType.PNG'>
+<div style="display: block; float:left;padding:10px;width:100%;">
+    <div *ngFor="let icon of icons;  let i = index;" style="display: block; float:left;">
+        <mat-icon>{{icon}}</mat-icon>
+
+    </div>
+</div>
+<div style="clear:both"></div>
+
+<hr>
+
+<div style="display: block; padding:10px;width:100%;">
+    <ul>
+        <li>App MODULE imports the Common MODULE</li>
+        <li>Common MODULE imports the required material components</li>
+        <li style='text-decoration:line-through;color:darkolivegreen'>User Component imports the Common MODULE</li>
+        <li>Note: Only SnackBar (not SnackBar Module needs to be declared for the constructor purpose)</li>
+    </ul>
+</div>
+
+<img src='./../assets/images/snack-icon/CommonModuleMap.PNG'>
+<hr>
+
+<button mat-raised-button color="primary" (click)="openSnackBar('Declared Only in Common Material Module','DoneX')">OPEN SNACKBAR</button>

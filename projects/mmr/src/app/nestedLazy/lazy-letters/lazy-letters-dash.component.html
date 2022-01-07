@@ -1,0 +1,27 @@
+<div style="border:1px solid green;padding:5px;margin-left:50px;margin-bottom:5px;">
+    <h4 style="color:green;">Lazy Letters Dashboard</h4>
+    <p><strong>Rule 1: router can directly import a non declared component. It cannot have other components placed inside it.</strong></p>
+    <a [routerLink]="'a'"><button class="btn btn-primary">a - not declared in LazyLettersModule -imported into router
+
+</button></a> <br/>
+    <p><strong>Rule 2: If a module wants to use a component that it doesn't declare, it must import the module that declares it</strong> (See biii)<br/>
+        <a [routerLink]="'b-dash-lazy-load-children'"><button class="btn btn-primary">b-Dashboard loadChildren(): => ('import...module')
+
+</button></a>
+        <a [routerLink]="'/lazy-letters'" class="p" style="margin-left:50px;">
+            <button class="btn btn-outline-danger">CLEAR lazy-letters &lt;router-outlet&gt; ([routerLink]= '/lazy-letters')</button><br/>
+        </a>
+
+
+
+
+        <div style="border:1px solid green;padding:5px;margin-left:50px;margin-bottom:5px;">
+
+            <span style="color:green;">&lt;router-outlet&gt;</span>
+            <router-outlet></router-outlet>
+            <span style="color:green;">&lt;router-outlet&gt;</span>
+        </div>
+
+        <button class="btn btn-dark" (click)="lazyCode=!lazyCode">Routing Code</button><br/>
+        <img *ngIf="lazyCode" src="assets/images/nestedLazy/lazy-loading-modules.PNG" style="width:100%;">
+</div>

@@ -1,0 +1,27 @@
+<div   style="border:2px solid purple;padding:5px;margin-bottom:5px;">     
+    <h4>b Dashboard (lazy loaded)</h4>
+    <a [routerLink]="'bi'"><button class="btn btn-outline-primary">bi -not declared -directly imported into b-dash-routing
+    </button></a> <br/>
+    
+    <a [routerLink]="'bii'"><button class="btn btn-outline-primary">bii - declared
+    </button></a><br/>
+    
+    
+  
+
+    <a [routerLink]="'biii'"><button class="btn btn-primary">biii hardcoding other components inside (same/not same modules)
+    </button></a><br/>
+    
+    
+
+  
+    
+    <div                                                style="border:1px solid purple;padding:5px;margin-left:50px;margin-bottom:5px;">
+    
+        <span style="color:purple;">&lt;router-outlet&gt;</span> 
+    <router-outlet></router-outlet>
+    <span style="color:purple;">&lt;router-outlet&gt;</span>
+    </div>
+       
+   
+  </div>

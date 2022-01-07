@@ -1,0 +1,52 @@
+<p><strong><span style="font-size:15px;"><mlb>routerLink</mlb>=
+    <mo>"stringAddress"</mo></span>
+</strong>
+</p>
+
+<p><strong><span style="font-size:15px;"><mlb>[routerLink]</mlb>=
+                                        <mo>"<mlb>&nbsp;[</mlb>&nbsp;<mr>'</mr>stringAddress&nbsp;<mr>'</mr>&nbsp;<mlb>]&nbsp;</mlb>"</mo></span>
+   </strong>
+
+</p>
+
+<p><strong><span style="font-size:15px;"><span class="bl l">[</span>routerLink<span class="bl l">]</span>=<span class="bl l">[</span>" variableName "<span class="bl l">]</span></span></strong><br/> component.ts
+
+    <br/> public variableName = "<a [routerLink]="variableName">{{variableName}}</a>";<br/>
+
+
+
+    <button class="btn btn-dark" (click)="toggleRoute()">toggleRoute</button><br/> updatingMyRoute() <br/> this.variableName = "{{variableName}}";
+</p>
+
+<hr>
+
+<h3>
+    <mr>No Slash</mr> - Append to url</h3>
+<p>
+    <a [routerLink]="['']">"[ ' ' ]"</a> => localhost:4200 loads to specified component - no error<br/>
+    <a [routerLink]="['routingXXXX']">"['routingXXXX']"</a> => localhost:4200/routing/
+    <mr>routingXXXX</mr> <br> Causes
+    <mr>error</mr><br/> Would only work if current url was '&nbsp;<br> See wildcard to remove error but just continually append
+
+    <hr>
+    <h3>
+        <mo>Add Slash</mo> - Navigate from the root</h3>
+    <p>
+        <a [routerLink]="['/']">"[' / ']"</a><br/>
+        <a [routerLink]="['/user']">"[' /user ']"</a><br/>
+    </p>
+    <hr>
+
+    <h3>Wildcard
+        <mlg>**</mlg> Oddity</h3>
+    <p>app.routing</p>
+    <p> &#123;&nbsp;
+        <mlb>path:</mlb>
+        <mo>'**'</mo>,
+        <mlg>component: RoutingComponent</mlg> &#125; </p>
+    <p>Will just keep appending to URL but not doing anything
+        <a [routerLink]="['routingXX']">"['routingXX ']"</a></p>
+    <p>
+        <mr>Error: </mr>Make sure it's at the end of the list of url paths in app.routing<br> or it will override the ones after it.
+    </p>
+    <br/>

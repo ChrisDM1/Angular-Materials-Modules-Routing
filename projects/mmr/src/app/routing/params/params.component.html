@@ -1,0 +1,76 @@
+<h2>Passing Parameters</h2>
+<h4 (click)="sc.k.lessons=!sc.k.lessons" style='cursor:pointer'>Lessons::</h4>
+
+<co [sw]="sc.k.lessons">
+    <ol>
+        <li>When the URL path changes the component is re-loaded</li>
+        <li>When the value of the parameter changes but the URL is the same the component is NOT Reloaded</li>
+        <li>Acquiring parameter via SNAPSHOT will only work if the component has been re-loaded</li>
+        <li>SUBSCRIBE will constantly check for changes in the parameter in the URL even if the URL path is the same and the component hasn't been re-loaded</li>
+        <li>Subscriptions to ActivatedRoute do not need to be unsubscribed</li>
+    </ol>
+
+</co>
+
+<hr>
+
+<h3>1) Navigate to Component Params with / without Parameter</h3>
+
+
+<mb>&lt;a </mb><span style="font-size:15px;"><mlb>[routerLink]</mlb>=
+    <mo>"&nbsp;<mr>'</mr>/params&nbsp;<mr>'</mr>&nbsp;"</mo></span>
+<mb>&gt;</mb><a [routerLink]="'/params'">&nbsp;/params</a><br>
+
+<mb>&lt;a </mb><span style="font-size:15px;"><mlb>[routerLink]</mlb>=
+        <mo>"&nbsp;<mr>'</mr>"['/params,myParam.value]"&nbsp;<mr>'</mr>&nbsp;"</mo></span>
+<mb>&gt;</mb><a [routerLink]="['/params',myParam.value]">&nbsp;/params:<mlb>myParam</mlb></a> ||
+<mo>/params:<span style='font-size: 18px;'>{{myParam.value}}</span></mo>
+<p>app.routing</p>
+<p> &#123;&nbsp;
+    <mlb>path:</mlb>
+    <mo>'params'</mo>,
+    <mlg>component: RoutingComponent</mlg> &#125; <br> &#123;&nbsp;
+    <mlb>path:</mlb>
+    <mo>'params/:myParam'</mo>,
+    <mlg>component: RoutingComponent</mlg> &#125; <br>
+    <mr>(MUST declare both in app.routing if you want both to be possible)</mr><br>
+    
+</p>
+Enter Param HERE:
+<input type="text" #myParam (input)="0"><a [routerLink]="['/params',myParam.value]">&nbsp;/params:<mlb>{{myParam.value}}</mlb></a><br>
+<mb>&lt;input type="text" </mb><span style="font-size:15px;"><mlb>#myParam (input)="<mo>0</mo>"&nbsp;&gt;</mlb><br>
+    Note: (input)="0" is a hack to make angular update as you type.<br> 
+    
+    myParamString: {{myParamString}}
+    <hr>
+
+<!--**********    SNAPSHOT    ********************-->
+
+<h3>2) Snapshot, only once per component load</h3>
+
+<p>(seems like whether you have routed there with/without a param, when a component loads you get one more param grab via snapshot)</p>
+
+<p><mb>constructor</mb>(<mb>private </mb><mlb>activatedRoute</mlb>: <mlg>ActivatedRoute</mlg>)&#123; </p>
+
+    <mb>this.</mb><mlb>myParamString</mlb> = <mlb>activatedRoute.snapshot.params.myParam</mlb> : myParamString : {{myParamString}}<br>
+    <!-- <span style='font-size: 10px;'> 
+    <mb>this.</mb><mlb>url</mlb> = <mlb>activatedRoute.snapshot.url.</mlb><my>join</my>(<mo>''</mo>) : myParamString : {{myParamString}}<br>
+    <mb>this.</mb><mlb>user</mlb> = <mlb>activatedRoute.snapshot.data.user</mlb><br>
+</span>--> &#125;
+<p id="notes">Notes / Bugs: Make sure that the string variable in the component does not have the same name as the input #Name </p>
+<hr>
+
+<h3>3) Subscribe</h3>
+<hr> Enter Param HERE:
+<!-- COPY THIS  -->
+<input type="text" #myParamSubscribe (input)="0"><a [routerLink]="['/params',myParamSubscribe.value]">&nbsp;/params:<mlb>{{myParamSubscribe.value}}</mlb></a>
+
+<br>
+<mb>&lt;input type="text" </mb><span style="font-size:15px;"><mlb>#myParamSubscribe (input)="<mo>0</mo>"&nbsp;&gt;</mlb>
+ 
+    myParamSubscribeString: {{myParamSubscribeString}} <br>   <br>
+    <p> <mb>this.</mb><mlb>activatedRoute.params.</mlb><my>subscribe</my>( </p>
+    <p>   &nbsp;(<mlb>param</mlb>:<mlg>any</mlg>) <mb>=> this</mb>.<mlb>myParamSubscribeString</mlb> = <mlb>param.myParam</mlb>) <br></p>
+            );<br>
+
+            

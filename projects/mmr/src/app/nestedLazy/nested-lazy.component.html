@@ -1,0 +1,82 @@
+<div>
+    <div>
+
+        <div style="border:1px solid purple;padding:5px;margin-left:50px;margin-bottom:5px;background-color: white;color:black">
+            <strong (click)="declaredSection=!declaredSection" style='cursor: pointer;color:blue'>Components Declared / Exported / Nested <span style='font-size: 9px;'>(click)</span></strong>
+            <one></one>
+            <div *ngIf="declaredSection">
+                <two></two>
+                <three></three>
+
+
+
+                <strong>Works: exported component (two) into a component (oneb) declared & hardcoded into app.html containing (three-x) not exported</strong>
+                <oneb></oneb>
+
+
+                <button class="btn btn-dark" (click)="hardcode=!hardcode">Code</button><br/>
+                <img src="./assets/images/nestedLazy/hardcode.PNG" *ngIf="hardcode">
+
+                <div style="border:1px solid red;padding:5px;margin-top:5px;margin-bottom:5px;">
+                    <strong>Errors</strong> 1) Placing THREE-X component (not exported from two.module) inside app.html
+                </div>
+
+                <div style="border:1px solid red;padding:5px;margin-top:5px;margin-bottom:5px;">
+                    <strong>Errors</strong> 2) Placing THREE-X component (not exported from two.module) in a component (oneb) declared & hardcoded into app.html
+                </div>
+                <img src="./assets/images/nestedLazy/hardcode1b.PNG"><br>
+
+                <hr style='border:5px solid black;'>
+
+                <h2>Routing these components</h2>
+
+
+                <strong>Components declared in app.module</strong><br/> [routerLink]= <br/>
+
+                <a [routerLink]="'/one'" class="p" style="margin-right:5px;">
+                    <button class="btn btn-outline-primary">" ' /one ' "</button>
+                </a>
+                <a [routerLink]="'/two'" class="p" style="margin-right:5px;">
+                    <button class="btn btn-outline-primary"> " ' /two ' "</button>
+                </a>
+
+
+
+                <a [routerLink]="'/oneb'" class="p" style="margin-right:5px;">
+                    <button class="btn btn-outline-primary"> " ' /oneb ' "</button>
+                </a> <br/> (note: two was exported from two.module & two.module was imported into app.module making it behave like it was declared in app.module)<br/>
+
+                <strong>Component NOT declared in app.module directly imported into app.routing.ts</strong><br/>
+
+                <a [routerLink]="'/three-x'" class="p" style="margin-right:5px;">
+                    <button class="btn btn-outline-primary"> " ' /three-x ' "</button>
+                </a> <br/>
+
+            </div>
+        </div>
+        <p style='margin-left: 50px;cursor: pointer;font-size: 8px;' (click)="declaredSection=!declaredSection">....{{declaredSection?'click for less':'click for more'}}...</p>
+
+        <hr>
+        <!--
+  ____             _   _               ____             _            _ _       _    
+ |  _ \ ___  _   _| |_(_)_ __   __ _  |  _ \ ___  _   _| |_ ___ _ __| (_)_ __ | | __
+ | |_) / _ \| | | | __| | '_ \ / _` | | |_) / _ \| | | | __/ _ \ '__| | | '_ \| |/ /
+ |  _ < (_) | |_| | |_| | | | | (_| | |  _ < (_) | |_| | ||  __/ |  | | | | | |   < 
+ |_| \_\___/ \__,_|\__|_|_| |_|\__, | |_| \_\___/ \__,_|\__\___|_|  |_|_|_| |_|_|\_\  
+                               |___/                                                        -->
+
+
+        <div style="margin:10px 0px;">
+            <strong>Direct Letters (3 outlets, 2 modules in app module, RouterModule declared in each module with &lt;router-outlet&gt;)</strong><br/>
+            <a [routerLink]="'/direct-letters'" class="p">
+                <button class="btn btn-warning">" ' /direct-letters ' "</button>
+            </a> <br/>
+            <a [routerLink]="'/lazy-letters'" class="p">
+                <button class="btn btn-primary" style="margin-top:5px;"> " ' /lazy-letters-Dashboard ' "</button>
+            </a>
+            loadChildren: () => import('...=> m.LazyLettersModule) },
+            <br/>
+
+        </div>
+
+    </div>

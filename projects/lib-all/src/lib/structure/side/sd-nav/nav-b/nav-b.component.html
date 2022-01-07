@@ -1,0 +1,62 @@
+<div id='nav-b' class='brd-shdw-rt' [ngStyle]="{width:ssh.mSt.sNavBWidth+'px',left:ssh.mSt.sNavBLeft+'px',paddingTop:'32px'}">
+    <!-- <button (click)="ms.sNavC_Toggle()" mat-icon-button style='margin-top:100px;color:white;'>1<mat-icon>menu</mat-icon></button> -->
+
+    <div style='display:block;width:100%;font-size:14px;text-align: right;' >
+
+
+
+
+    <nav #navmenuTwo>
+        <ul class="menu">
+
+            <!--
+          ____                      _     __  __                  
+         |  _ \ __ _ _ __ ___ _ __ | |_  |  \/  | ___ _ __  _   _ 
+         | |_) / _` | '__/ _ \ '_ \| __| | |\/| |/ _ \ '_ \| | | |
+         |  __/ (_| | | |  __/ | | | |_  | |  | |  __/ | | | |_| |
+         |_|   \__,_|_|  \___|_| |_|\__| |_|  |_|\___|_| |_|\__,_|  -->
+
+
+            <li *ngFor="let pMenu of ms.parentMenu">
+                <a (click)="ms.selectMenu(pMenu,'childMenu')" (mouseenter)="ms.mouseEnter(pMenu)" [ngStyle]="{color:ms.activeColor(pMenu),
+                                                                fontWeight:ms.activeWeight(pMenu)}">{{pMenu.label}}</a>
+
+
+
+                <!--
+           1   ____ _     _ _     _   __  __                  
+              / ___| |__ (_) | __| | |  \/  | ___ _ __  _   _ 
+             | |   | '_ \| | |/ _` | | |\/| |/ _ \ '_ \| | | |
+             | |___| | | | | | (_| | | |  | |  __/ | | | |_| |
+              \____|_| |_|_|_|\__,_| |_|  |_|\___|_| |_|\__,_| -->
+
+
+                <ul class="drop-down" [@slideUp] *ngIf="pMenu == ms.selectedParentMenu">
+                    <li *ngFor="let cMenu of pMenu.childMenu">
+                        <a (click)="ms.selectMenu(cMenu,'grandChildMenu')" (mouseenter)="ms.mouseEnter(cMenu);" [ngStyle]="{color:ms.activeColor(cMenu),fontWeight:ms.activeWeight(cMenu)}">{{cMenu.label}} 
+                                  <mat-icon *ngIf="cMenu.grandChildMenu != null" style='font-size: 10px;height:auto'>expand_more</mat-icon></a>
+
+
+                        <!--
+                       ____                     _  ____ _     _ _     _                 
+                      / ___|_ __ __ _ _ __   __| |/ ___| |__ (_) | __| |_ __ ___ _ __   
+                     | |  _| '__/ _` | '_ \ / _` | |   | '_ \| | |/ _` | '__/ _ \ '_ \  
+                     | |_| | | | (_| | | | | (_| | |___| | | | | | (_| | | |  __/ | | | 
+                      \____|_|  \__,_|_| |_|\__,_|\____|_| |_|_|_|\__,_|_|  \___|_| |_| -->
+
+
+                        <ul class="drop-down" [@slideUp] *ngIf="cMenu == ms.selectedChildMenu">
+                            <li *ngFor="let grandChild of cMenu.grandChildMenu">
+
+                                <a (click)="ms.selectMenu(grandChild,'greatGrandChild')" (mouseenter)="ms.mouseEnter(grandChild);" [ngStyle]="{color:ms.activeColor(grandChild),'fontWeight':ms.activeWeight(grandChild)}">{{grandChild.label}}</a>
+
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</div>

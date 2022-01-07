@@ -1,0 +1,105 @@
+<h1>CanActivate / CanDeactivate</h1>
+<p>Note: should work as an observable, is possible for server requests</p>
+
+
+<p><span style='font-size:large;font-weight:550;color:dodgerblue'>
+        CanActivate</span> - When not logged in you cannot open the specific component (GuardOutlet)</p>
+
+
+
+<a [routerLink]="['/guards',{outlets:{guardOutlet: 'outlet'}}]" >Open Outlet</a>&nbsp; &lt;
+&nbsp; <mb>a</mb>&nbsp; <mlb>[routerLink]</mlb>=<mo>"['/guards',&#123;outlets:&#123;guardOutlet: 'outlet'&#125;&#125;]"</mo>&nbsp;
+            &gt;...&lt;/<mb>a</mb>&gt; <br>
+
+<a [routerLink]="['/guards',{outlets:{guardOutlet: null}}]" >Close Outlet</a>&nbsp; &lt;
+&nbsp; <mb>a</mb>&nbsp; <mlb>[routerLink]</mlb>=<mo>"['/guards',&#123;outlets:&#123;guardOutlet: null&#125;&#125;]"</mo>&nbsp;
+        &gt;...&lt;/<mb>a</mb>&gt; <br>            
+
+   <hr>
+
+   <p><span style='font-size:large;font-weight:550;color:red'>
+    CanDeactivate</span> - Cannot exit this component route when condition NOT met</p>
+    <a [routerLink]="['/navigate']">[rl]="['/navigate']"</a> &nbsp; <mb>&lt;a</mb> [<mlb>routerLink</mlb>]="<mo>['/navigate']</mo>"&gt;
+    
+<hr>
+
+   
+   &#123;<br>
+    <mlb>path:</mlb><mo> 'guards'</mo>,<br>
+    <mlg>component: GuardsComponent</mlg> &#125;, 
+
+   
+   <div style='margin-left: 50px;'>
+    <mr>canDeactivate:</mr>[ &#123;<mlg>BlockExitByDeactivateRouteGuard </mlg>],  <button mat-button [ngStyle]="{backgroundColor:canI_exitComponent?'dodgerblue':'red',color:'white'}"
+    (click)="canI_exitComponent=!canI_exitComponent"
+    >{{canI_exitComponent?"Can route out of Component": "CANNOT Route out of Component"}}</button><br>
+        <mlb>children:</mlb>[ &#123;<br>
+        <mlb>path:</mlb><mo> 'outlet'</mo>,<br>
+        <mlg>component: OutletComponent</mlg> &#125;, <br>
+        <mlb>outlet:</mlb><mo> 'guardOutlet'</mo>,<br>
+        <strong><span style='color:dodgerblue'>canActivate</span>: &nbsp;[<mlg> LoggedInSoActivateGuard </mlg>]</strong>,
+        <button mat-button [ngStyle]="{backgroundColor:lgn.returnLoginStatus()?'dodgerblue':'red',color:'white'}"
+        (click)="lgn.toggleLoginStatus()"
+        >{{lgn.returnLoginStatus()?"Logged In": "NOT Logged In"}}</button><br>
+        &#125; ] &#125;<br>
+    
+</div>
+
+<hr>
+
+<p>
+<mp>export</mp> <mb> class</mb> <mlg> LoginGuardService</mlg>
+</p>
+<p><mb>private</mb><mlb> loggedIn </mlb>=<mb> false</mb>; </p>  
+
+
+
+<hr>
+
+<mp>export</mp> <mb> class</mb> <mlg> LoginSoActivateGuard</mlg><mb> implements</mb> <mlg> CanActivate</mlg> &#123;<br>
+<my>canActivate</my>(<br>
+   <mlb> route</mlb>: <mlg>ActivatedRouteSnapshot</mlg>,
+   <mlb>state</mlb>: <mlg>RouterStateSnapshot): Observable...Promise... UrlTree.. | boolean | UrlTree</mlg> &#123;<br>
+
+   <div style='margin-left: 50px;'>
+    <mp>if</mp>( !<mb> this</mb>.<mlb>loginGuardService</mlb>.<my>returnLoginStatus</my>())&#123;<br>
+    <my>alert</my>(<mo>"Please Login"</mo>);&#125;<br>
+
+
+    <mg [eS]="'return true or false to the router as to whether to route or not'">Then..</mg><br>
+
+    <mp>return</mp><mb> this</mb>.<mlb>loginGuardService</mlb>.<my>returnLoginStatus</my>();
+</div>
+
+<hr>
+
+<!-- INTERFACE -->
+<mb>interface</mb> <mlg> CanDeactivate</mlg>&lt;<mlg>T</mlg>&gt; &#123;<br>
+<div style='margin-left:50px;'><my>canDeactivate</my>(
+   <mlb> component</mlb>: <mlg>T</mlg>,
+   <mlb>currentRoute</mlb>: <mlg>.....</mlg> ) &#123;</div><br>
+
+
+<!-- GUARD COMPONENT-->
+
+<mp>export</mp> <mb> class</mb> <mlg> BlockExitByDeactivateRouteGuard</mlg><mb> implements</mb> <mlg> CanDeactivate</mlg>&lt;<mlg>GuardsComponent </mlg>&gt; &#123;<br>
+
+    <div style='margin-left:50px;'>
+    <my>canDeactivate</my>(
+    <span style='font-size: large;'><mlb> guardComponent</mlb>: <mlg>GuardsComponent</mlg></span>,
+    <mlb>currentRoute</mlb>: <mlg>.....</mlg> ) &#123;<br>
+            <div style='margin-left: 50px;'>
+                <mp>if</mp>( ! <mlb>guardComponent.canI_exitComponent</mlb>)&#123;<br>
+                <my>alert</my>(<mo>"Conditions not met to Exit this component"</mo>);&#125;<br>
+
+
+                <mg [eS]="'return true or false to the router as to whether to route or not'">Then..</mg><br>
+
+                <mp>return</mp><mlb> guardComponent.canI_exitComponent</mlb>;
+            </div>
+    </div>
+<hr>
+
+<span style="color:rgb(0, 153, 255);">&lt;router-outlet <mlb>name=</mlb><mo>"guardOutlet"</mo>&gt;</span><br>
+<router-outlet name="guardOutlet"></router-outlet>  
+<span style="color:rgb(0, 153, 255);">&lt;/router-outlet&gt;</span>          

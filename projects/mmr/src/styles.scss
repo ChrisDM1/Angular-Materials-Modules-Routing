@@ -1,0 +1,55 @@
+@import 'projects/lib-all/src/lib/styles/material/custom-theme';
+@import 'projects/lib-all/src/lib/styles/lib-all-styles';
+//SET BACKGROUND to dark theme
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: rgb(27, 27, 27);
+    color: white;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+hr {
+    border-color: white
+}
+
+.l {
+    font-size: 20px;
+}
+
+.m {
+    font-size: 15px;
+}
+
+.rd {
+    color: red;
+}
+
+.bl {
+    color: blue;
+}
+
+.active {
+    color: red;
+}
+
+.xPointer {
+    cursor: pointer;
+}
+
+.code {
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+a {
+    color: rgb(0, 153, 255)
+}
